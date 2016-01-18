@@ -7,38 +7,45 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     xmlns:semicirclemenu="http://schemas.android.com/apk/res-auto"
     tools:showIn="@layout/activity_main"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@android:color/darker_gray">
 
     <com.liujiaqi.library.SemicircleMenuView
         android:layout_width="wrap_content"
         android:layout_height="200dp"
-        android:background="@android:color/darker_gray"
+        android:background="@android:color/white"
         semicirclemenu:intersize="80dp"
         semicirclemenu:outelevation="3dp"
         semicirclemenu:rectmarge="5dp"
         android:layout_alignParentBottom="true"
         android:id="@+id/view3">
         <ImageButton
+            android:id="@+id/ib_view3_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@mipmap/ic_launcher"/>
         <ImageButton
+            android:id="@+id/ib_view3_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@mipmap/ic_launcher"/>
         <ImageButton
+            android:id="@+id/ib_view3_3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@mipmap/ic_launcher"/>
         <ImageButton
+            android:id="@+id/ib_view3_4"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:background="@mipmap/ic_launcher"/>
         <ImageButton
+            android:id="@+id/ib_view3_5"
             android:layout_width="10dp"
             android:layout_height="10dp"
             android:background="@mipmap/ic_launcher"/>
         <ImageButton
+            android:id="@+id/ib_view3_6"
             android:layout_width="200dp"
             android:layout_height="10dp"
             android:background="@mipmap/ic_launcher"/>
@@ -46,21 +53,34 @@
 
     <com.liujiaqi.library.SemicircleMenuView
         android:id="@+id/view2"
-        android:layout_width="300dp"
+        android:layout_width="400dp"
         android:layout_height="200dp"
         android:background="#FFABCDEF"
-        semicirclemenu:intersize="50dp"
+        semicirclemenu:intersize="60dp"
         semicirclemenu:rectmarge="2dp"
         android:layout_above="@id/view3">
         <ImageButton
+            android:id="@+id/ib_view2_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@mipmap/ic_launcher"/>
         <ImageButton
+            android:id="@+id/ib_view2_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@mipmap/ic_launcher"/>
         <ImageButton
+            android:id="@+id/ib_view2_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/ic_launcher"/>
+        <ImageButton
+            android:id="@+id/ib_view2_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/ic_launcher"/>
+        <ImageButton
+            android:id="@+id/ib_view2_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@mipmap/ic_launcher"/>
@@ -75,18 +95,22 @@
         semicirclemenu:rectmarge="2dp"
         android:layout_above="@id/view2">
         <ImageButton
+            android:id="@+id/ib_view1_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@mipmap/ic_launcher"/>
         <ImageButton
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:background="@mipmap/ic_launcher"/>
-        <ImageButton
+            android:id="@+id/ib_view1_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@mipmap/ic_launcher"/>
         <ImageButton
+            android:id="@+id/ib_view1_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/ic_launcher"/>
+        <ImageButton
+            android:id="@+id/ib_view1_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@mipmap/ic_launcher"/>

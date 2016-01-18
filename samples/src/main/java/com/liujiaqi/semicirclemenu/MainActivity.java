@@ -22,6 +22,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.liujiaqi.library.SemicircleMenuView;
 
@@ -42,9 +44,24 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         view1 = (SemicircleMenuView) findViewById(R.id.view1);
         view1.setAnimationType(SemicircleMenuView.AnimationType.ALPHA);
+        ImageButton ib_view3_1 = (ImageButton) findViewById(R.id.ib_view3_1);
+        ib_view3_1.setOnClickListener(new ImageButton.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Item Click", Toast.LENGTH_SHORT).show();
+            }
+        });
+        ImageButton ib_view3_2 = (ImageButton) findViewById(R.id.ib_view3_2);
+        ib_view3_2.setOnClickListener(new ImageButton.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Item Click", Toast.LENGTH_SHORT).show();
+            }
+        });
         view2 = (SemicircleMenuView) findViewById(R.id.view2);
         view2.setAnimationType(SemicircleMenuView.AnimationType.ZOOM);
         view3 = (SemicircleMenuView) findViewById(R.id.view3);
+        view3.setAnimationType(SemicircleMenuView.AnimationType.ROTATE);
     }
 
     @Override

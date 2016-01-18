@@ -26,6 +26,7 @@ import android.graphics.PaintFlagsDrawFilter;
 import android.graphics.Path;
 import android.graphics.Region;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -41,7 +42,8 @@ public class SemicircleMenuView extends ViewGroup{
     public enum AnimationType{
         ROTATE,
         ZOOM,
-        ALPHA
+        ALPHA,
+        NONE
     }
 
     public void setAnimationType(AnimationType animationType) {
@@ -49,7 +51,7 @@ public class SemicircleMenuView extends ViewGroup{
     }
 
     //默认问旋转动画
-    private AnimationType animationType = AnimationType.ROTATE;
+    private AnimationType animationType = AnimationType.NONE;
 
     //上下文
     private Context mContext = null;
@@ -73,7 +75,7 @@ public class SemicircleMenuView extends ViewGroup{
     //阴影
     private float mElevation = 0;
 
-    private boolean mRefreshing = false;
+    private int position = 0;
 
     public SemicircleMenuView(Context context) {
         this(context, null);
@@ -86,7 +88,6 @@ public class SemicircleMenuView extends ViewGroup{
     public SemicircleMenuView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mContext = context;
-        mRefreshing = false;
         final TypedArray a = context.obtainStyledAttributes(
                 attrs, R.styleable.semicirclemenu);
         final int targetSdkVersion = context.getApplicationInfo().targetSdkVersion;
@@ -102,7 +103,6 @@ public class SemicircleMenuView extends ViewGroup{
      */
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        System.out.println("onMeasure...........");
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
         int w = getDefaultSize(0, widthMeasureSpec);
@@ -122,9 +122,9 @@ public class SemicircleMenuView extends ViewGroup{
             mCircleRadiusY = mCircleRadius;
         }
         else{
-            mCircleRadius = h/2;
+            mCircleRadius = w/2;
             //计算圆心点y
-            mCircleRadiusY = mCircleRadius*2;
+            mCircleRadiusY = h;
         }
         //计算内圆半径
         mInterCircleRadius = mCircleRadius - mIntersize;
@@ -176,43 +176,43 @@ public class SemicircleMenuView extends ViewGroup{
      */
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        if(mRefreshing == true){
-            return;
-        }
-        mRefreshing = true;
-        System.out.println("onLayout...........");
         int cCount = getChildCount();
-
         if(cCount == 0){
             return;
         }
-
         int width  = getWidth();
         int height = getHeight();
 
         //计算圆半径
         float c_ir = mCircleRadius-mIntersize/2;
-
         float cent_width = (width - mIntersize)/(cCount+1);
-
         // 遍历所有的孩子
         for (int i = 0; i < cCount; i++)
         {
+            position = i;
             //计算孩子中心的x轴坐标点
             float tempx = mIntersize/2+(i+1)*cent_width;
             //计算直角三角形的高度
-            float tempheight = (float) Math.sqrt(((c_ir*c_ir)-(Math.abs(width/2-tempx))*(Math.abs(width/2-tempx))));
+            float tempheight = (float) Math.sqrt(Math.abs(((c_ir*c_ir)-(Math.abs(width/2-tempx))*(Math.abs(width/2-tempx)))));
             //计算孩子中心的y轴坐标点
-            float tempy = (float) (mCircleRadius-tempheight);
+            float tempy;
+            if(height >= mCircleRadius)
+            {
+                tempy = height - tempheight;
+            }
+            else{
+                tempy = mCircleRadius - tempheight;
+            }
             int size = getDefaultChildSize(getChildAt(i));
             int childleft = (int)(tempx) - size/2;
             int childtop = (int)(tempy) - size/2;
             int childright = (int)(tempx) + size/2;
             int childbottom = (int)(tempy) + size/2;
             getChildAt(i).layout(childleft, childtop, childright, childbottom);
+            final View currentView = getChildAt(i);
             //将孩子旋转到指定角度
             AnimatorSet set = new AnimatorSet() ;
-            float rote = 0;
+            float rote;
             //计算旋转角度
             float rotateSize = (float) Math.toDegrees(Math.atan(cent_width / (height - tempy)));
             if(cCount % 2 == 0){
@@ -237,9 +237,7 @@ public class SemicircleMenuView extends ViewGroup{
                     Animation operatingAnim = AnimationUtils.loadAnimation(mContext, R.anim.rotate);
                     DecelerateInterpolator lin = new DecelerateInterpolator();//减速旋转
                     operatingAnim.setInterpolator(lin);
-                    if (operatingAnim != null) {
-                        getChildAt(i).startAnimation(operatingAnim);
-                    }
+                    getChildAt(i).startAnimation(operatingAnim);
                 }
                 break;
                 case ZOOM:
@@ -247,7 +245,7 @@ public class SemicircleMenuView extends ViewGroup{
                     ObjectAnimator alpha = ObjectAnimator.ofFloat(getChildAt(i), "alpha", 0f, 1f);
                     alpha.setDuration(2000);//设置动画时间
                     alpha.setInterpolator(new DecelerateInterpolator());//设置动画插入器，减速
-                    alpha.setRepeatCount(1);//设置动画重复次数，这里-1代表无限
+                    alpha.setRepeatCount(0);//设置动画重复次数，这里-1代表无限
                     //缩放动画
                     AnimatorSet animatorSet = new AnimatorSet();//组合动画
                     ObjectAnimator scaleX = ObjectAnimator.ofFloat(getChildAt(i), "scaleX", 2f, 1f);
@@ -264,10 +262,11 @@ public class SemicircleMenuView extends ViewGroup{
                     ObjectAnimator alpha = ObjectAnimator.ofFloat(getChildAt(i), "alpha", 0f, 1f);
                     alpha.setDuration(2000);//设置动画时间
                     alpha.setInterpolator(new DecelerateInterpolator());//设置动画插入器，减速
-                    alpha.setRepeatCount(1);//设置动画重复次数，这里-1代表无限
+                    alpha.setRepeatCount(0);//设置动画重复次数，这里-1代表无限
                     alpha.start();
                 }
                 break;
+                case NONE:
                 default:
                     break;
             }
@@ -277,12 +276,10 @@ public class SemicircleMenuView extends ViewGroup{
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        System.out.println("onDraw...........");
     }
 
     @Override
     public void draw(Canvas canvas) {
-        System.out.println("draw...........");
         canvas.setDrawFilter(new PaintFlagsDrawFilter(0, Paint.FILTER_BITMAP_FLAG | Paint.ANTI_ALIAS_FLAG));
         Path mPath = new Path();
 
