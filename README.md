@@ -1,6 +1,6 @@
-<h2><a id="user-content-about-this-app" class="anchor" href="#about-this-app" aria-hidden="true"><span class="octicon octicon-link"></span></a>关于应用</h2>
+<h2><a id="user-content-about-this-app" class="anchor" href="#about-this-app" aria-hidden="true"><span class="octicon octicon-link"></span></a>关于</h2>
 <p>支持Android3.0以上的设备</p>
-<h2><a id="user-content-license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+<h2><a id="user-content-license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>许可证</h2>
 <p>This project is free software: you can redistribute it and/or modify it under the terms of the Apache General Public License as published by the Free Software Foundation.</p>
 <ul>
 <li>Copyright 2016 CaryMax1988 (<a href="https://github.com/Carymax1988/SemicircleMenu/blob/master/LICENSE">Apache License</a>)</li>
