@@ -2,7 +2,10 @@
 支持Android3.0以上的设备
 <br />
 <h2><a id="user-content-license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
-    <p><a href="LICENSE">License</a></p>
+    <ul>
+    <li>Apache License: <a href="https://github.com/Carymax1988/SemicircleMenu/blob/master/LICENSE">LICENSE</a></li>
+    
+    </ul>
 <br />
 <h2><a id="user-content-source-code-of-libraries-used" class="anchor" href="#source-code-of-libraries-used" aria-hidden="true"><span class="octicon octicon-link"></span></a>Source code of libraries used</h2>
 
