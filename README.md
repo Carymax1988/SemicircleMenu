@@ -2,9 +2,7 @@
 支持Android3.0以上的设备
 
 <h2><a id="user-content-license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
-    <ul>
-    <li>Apache License: <a href="https://github.com/Carymax1988/SemicircleMenu/blob/master/LICENSE">LICENSE</a></li>
-    </ul>
+    <p>This project is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
 <h2><a id="user-content-source-code-of-libraries-used" class="anchor" href="#source-code-of-libraries-used" aria-hidden="true"><span class="octicon octicon-link"></span></a>Source code of libraries used</h2>
 
 <h2><a id="user-content-documentation" class="anchor" href="#documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Documentation</h2>
