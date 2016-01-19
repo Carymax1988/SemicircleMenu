@@ -55,8 +55,17 @@ public class SemicircleMenuView extends ViewGroup{
 
     //上下文
     private Context mContext = null;
+
     //圆环半径
     private float mIntersize = 0;
+    public float getmIntersize() {
+        return mIntersize;
+    }
+
+    public void setmIntersize(float mIntersize) {
+        this.mIntersize = mIntersize;
+    }
+
     //圆环半径默认值
     private final float mDefaultInterSize = 50;
 
@@ -176,6 +185,14 @@ public class SemicircleMenuView extends ViewGroup{
      */
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
+
+    }
+
+    public void invalidate() {
+        refreshView();
+    }
+
+    private void refreshView() {
         int cCount = getChildCount();
         if(cCount == 0){
             return;
@@ -275,6 +292,7 @@ public class SemicircleMenuView extends ViewGroup{
 
     @Override
     protected void onDraw(Canvas canvas) {
+        refreshView();
         super.onDraw(canvas);
     }
 

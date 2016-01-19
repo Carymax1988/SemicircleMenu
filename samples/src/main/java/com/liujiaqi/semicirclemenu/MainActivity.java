@@ -16,13 +16,16 @@
 
 package com.liujiaqi.semicirclemenu;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.liujiaqi.library.SemicircleMenuView;
@@ -35,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     SemicircleMenuView view1;
     SemicircleMenuView view2;
     SemicircleMenuView view3;
+
+    RelativeLayout root_view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,9 +64,41 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         view2 = (SemicircleMenuView) findViewById(R.id.view2);
+
+        ImageButton btna = new ImageButton(this);
+        btna.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        btna.setBackgroundResource(R.mipmap.ic_launcher);
+        view2.addView(btna);
+
+        ImageButton btnb = new ImageButton(this);
+        btnb.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        btnb.setBackgroundResource(R.mipmap.ic_launcher);
+        view2.addView(btnb);
+
         view2.setAnimationType(SemicircleMenuView.AnimationType.ZOOM);
         view3 = (SemicircleMenuView) findViewById(R.id.view3);
         view3.setAnimationType(SemicircleMenuView.AnimationType.ROTATE);
+
+        SemicircleMenuView view4 = new SemicircleMenuView(this);
+        view4.setBackgroundColor(0xFF123455);
+        view4.setAnimationType(SemicircleMenuView.AnimationType.NONE);
+        view4.setmIntersize(100);
+        ImageButton btn1 = new ImageButton(this);
+        btn1.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        btn1.setBackgroundResource(R.mipmap.ic_launcher);
+        view4.addView(btn1);
+        ImageButton btn2 = new ImageButton(this);
+        btn2.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        btn2.setBackgroundResource(R.mipmap.ic_launcher);
+        view4.addView(btn2);
+        ImageButton btn3 = new ImageButton(this);
+        btn3.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        btn3.setBackgroundResource(R.mipmap.ic_launcher);
+        view4.addView(btn3);
+        root_view = (RelativeLayout) findViewById(R.id.root_view);
+        RelativeLayout.LayoutParams l = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        l.addRule(RelativeLayout.ABOVE, R.id.view1);
+        root_view.addView(view4, l);
     }
 
     @Override
