@@ -242,7 +242,7 @@ public class SemicircleMenuView extends ViewGroup{
                         ? -rotateSize
                         : (i == Math.floor(cCount/2)) ? 0 : rotateSize;
             }
-            ObjectAnimator anim1 = ObjectAnimator .ofFloat(getChildAt(i), "rotation", 0f, rote);
+            ObjectAnimator anim1 = ObjectAnimator .ofFloat(getChildAt(i), "rotation", rote, rote);
             anim1.setDuration(10);
             set.play(anim1);
             set.start();
@@ -251,10 +251,11 @@ public class SemicircleMenuView extends ViewGroup{
                 case ROTATE:
                 {
                     //旋转动画
-                    Animation operatingAnim = AnimationUtils.loadAnimation(mContext, R.anim.rotate);
-                    DecelerateInterpolator lin = new DecelerateInterpolator();//减速旋转
-                    operatingAnim.setInterpolator(lin);
-                    getChildAt(i).startAnimation(operatingAnim);
+//                    Animation operatingAnim = AnimationUtils.loadAnimation(mContext, R.anim.rotate);
+//                    DecelerateInterpolator lin = new DecelerateInterpolator();//减速旋转
+//                    operatingAnim.setInterpolator(lin);
+//                    getChildAt(i).startAnimation(operatingAnim);
+                    ObjectAnimator.ofFloat(getChildAt(i), "rotation", rote, rote+360F).setDuration(1000).start();
                 }
                 break;
                 case ZOOM:

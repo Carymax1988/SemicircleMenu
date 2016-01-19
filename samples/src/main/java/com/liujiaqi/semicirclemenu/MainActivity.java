@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
         view2.setAnimationType(SemicircleMenuView.AnimationType.ZOOM);
         view3 = (SemicircleMenuView) findViewById(R.id.view3);
         view3.setAnimationType(SemicircleMenuView.AnimationType.ROTATE);
+        view3.invalidate();
 
         SemicircleMenuView view4 = new SemicircleMenuView(this);
         view4.setBackgroundColor(0xFF123455);
