@@ -251,10 +251,6 @@ public class SemicircleMenuView extends ViewGroup{
                 case ROTATE:
                 {
                     //旋转动画
-//                    Animation operatingAnim = AnimationUtils.loadAnimation(mContext, R.anim.rotate);
-//                    DecelerateInterpolator lin = new DecelerateInterpolator();//减速旋转
-//                    operatingAnim.setInterpolator(lin);
-//                    getChildAt(i).startAnimation(operatingAnim);
                     ObjectAnimator.ofFloat(getChildAt(i), "rotation", rote, rote+360F).setDuration(1000).start();
                 }
                 break;
