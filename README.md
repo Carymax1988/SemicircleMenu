@@ -19,4 +19,4 @@ limitations under the License.</p>
 <p>library</p>
 <h2><a id="user-content-documentation" class="anchor" href="#documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Document</h2>
 <p><a href="https://github.com/Carymax1988/SemicircleMenu/wiki">Wiki</a></p>
-<p><a href="http://liujiaqi.imblog.in">Author</a></p>
+<p><a href="http://liujiaqi.imblog.in">Author's Blog</a></p>
