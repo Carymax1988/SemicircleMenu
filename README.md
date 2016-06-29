@@ -2,7 +2,7 @@
 <p>Now Supports All Android 3.0+ Devices</p>
 <img src="https://github.com/Carymax1988/SemicircleMenu/blob/master/demo.gif"></img>
 <h2><a id="user-content-license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
-<p>Copyright 2016 CaryMax1988</p>
+<p>Copyright 2016 刘家奇</p>
 
 <p>Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
